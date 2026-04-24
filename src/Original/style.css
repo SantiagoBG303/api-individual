@@ -1,0 +1,11 @@
+h1 {
+  margin-bottom: 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}
