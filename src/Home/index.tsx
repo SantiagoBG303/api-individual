@@ -1,24 +1,32 @@
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+type Joke = {
+  id: string;
+  value: string;
+};
 
 function Home() {
-  const [jokes, setJokes] = useState<any[]>([]);
+  const [jokes, setJokes] = useState<Joke[]>([]);
   const [search, setSearch] = useState("chuck");
 
+  const fetchData = useCallback(async () => {
+    const response = await fetch(
+      `https://api.chucknorris.io/jokes/search?query=${search}`
+    );
+    const data = await response.json();
+    setJokes(Array.isArray(data.result) ? data.result : []);
+  }, [search]);
+
   useEffect(() => {
-    fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchData();
+  }, [fetchData]);
 
-  const fetchData = () => {
-    fetch(`https://api.chucknorris.io/jokes/search?query=${search}`)
-      .then((res) => res.json())
-      .then((data) => setJokes(data.result));
-  };
-
-  const guardarFavorito = (joke: any) => {
-    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
-    favoritos.push(joke);
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  const guardarFavorito = (joke: Joke) => {
+    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]") as unknown;
+    const nextFavorites = Array.isArray(favoritos) ? [...favoritos, joke] : [joke];
+    localStorage.setItem("favoritos", JSON.stringify(nextFavorites));
   };
 
   return (

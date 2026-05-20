@@ -1,12 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+type Joke = {
+  id: string;
+  value: string;
+};
 
 function Favoritos() {
-  const [favoritos, setFavoritos] = useState<any[]>([]);
+  const [favoritos] = useState<Joke[]>(() => {
+    const stored = localStorage.getItem("favoritos");
+    if (!stored) return [];
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("favoritos") || "[]");
-    setFavoritos(data);
-  }, []);
+    try {
+      const parsed = JSON.parse(stored);
+      return Array.isArray(parsed) ? (parsed as Joke[]) : [];
+    } catch {
+      return [];
+    }
+  });
 
   return (
     <div>

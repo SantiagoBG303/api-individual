@@ -1,17 +1,15 @@
 function Informativa() {
   return (
-    <div className="informativa-container">
-      <h1>Informativa</h1>
-
-      <p>
-        Esta aplicación utiliza una API pública para mostrar chistes.
-      </p>
-
-      <img 
-        src="/api-individual/image.png" 
-        alt="Imagen informativa" 
-        className="informativa-img"
-      />
+    <div className="page-shell info-panel">
+      <div className="info-card">
+        <h1>Informativa</h1>
+        <p>
+          Esta aplicación utiliza Firebase Authentication para proteger tu acceso y guarda favoritos con una experiencia moderna y responsiva.
+        </p>
+        <p>
+          El panel de usuario solo es accesible cuando estás logueado. Si no, serás redirigido automáticamente a la pantalla de login.
+        </p>
+      </div>
     </div>
   );
 }

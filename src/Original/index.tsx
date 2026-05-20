@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
+type Joke = {
+  value: string;
+};
+
 function Original() {
-  const [joke, setJoke] = useState<any>(null);
+  const [joke, setJoke] = useState<Joke | null>(null);
 
   useEffect(() => {
     fetch("https://api.chucknorris.io/jokes/random")
