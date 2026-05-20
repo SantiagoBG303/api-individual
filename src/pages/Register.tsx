@@ -61,8 +61,16 @@ function Register() {
   return (
     <div className="page-shell">
       <div className="auth-card">
-        <h1>Crear cuenta</h1>
-        <p className="subtitle">Regístrate y accede a tu panel personal.</p>
+        <div className="auth-header">
+          <div className="auth-title">
+            <span className="auth-icon">📝</span>
+            <div>
+              <h1>Crear cuenta</h1>
+              <p className="subtitle">Regístrate y accede a tu panel personal.</p>
+            </div>
+          </div>
+          <div className="auth-pill">Fácil, rápido y seguro</div>
+        </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
           <label>

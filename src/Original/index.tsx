@@ -14,9 +14,20 @@ function Original() {
   }, []);
 
   return (
-    <div>
-      <h1>Original</h1>
-      <p>{joke?.value}</p>
+    <div className="page-shell">
+      <div className="info-card">
+        <div className="page-hero">
+          <div>
+            <h1 className="page-title">Original</h1>
+            <p className="page-subtitle">Descubre un chiste aleatorio de Chuck Norris para animar tu día.</p>
+          </div>
+          <span className="card-badge">Un nuevo chiste cada vez</span>
+        </div>
+
+        <div className="joke-card">
+          <p>{joke?.value || "Cargando un chiste épico..."}</p>
+        </div>
+      </div>
     </div>
   );
 }

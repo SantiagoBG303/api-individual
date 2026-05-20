@@ -51,8 +51,16 @@ function Login() {
   return (
     <div className="page-shell">
       <div className="auth-card">
-        <h1>Iniciar sesión</h1>
-        <p className="subtitle">Accede a tu panel y guarda tus favoritos.</p>
+        <div className="auth-header">
+          <div className="auth-title">
+            <span className="auth-icon">🔐</span>
+            <div>
+              <h1>Iniciar sesión</h1>
+              <p className="subtitle">Accede a tu panel y guarda tus favoritos.</p>
+            </div>
+          </div>
+          <div className="auth-pill">Acceso seguro con email y contraseña</div>
+        </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
           <label>

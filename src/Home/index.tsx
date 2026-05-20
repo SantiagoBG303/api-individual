@@ -30,26 +30,43 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="page-shell">
+      <div className="info-card">
+        <div className="page-hero">
+          <div>
+            <h1 className="page-title">Explora chistes épicos</h1>
+            <p className="page-subtitle">Busca chistes de Chuck Norris y guarda los mejores en favoritos.</p>
+          </div>
+          <span className="card-badge">Gratis y totalmente divertido</span>
+        </div>
 
-      <input
-        type="text"
-        placeholder="Buscar chiste"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <button onClick={fetchData}>Buscar</button>
-
-      {jokes.map((joke) => (
-        <div key={joke.id}>
-          <p>{joke.value}</p>
-          <button onClick={() => guardarFavorito(joke)}>
-            Guardar en favoritos
+        <div className="search-row">
+          <label className="input-label">
+            Buscar chiste
+            <input
+              className="content-input"
+              type="text"
+              placeholder="Buscar chiste"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </label>
+          <button className="button" onClick={fetchData}>
+            Buscar
           </button>
         </div>
-      ))}
+
+        <div className="joke-list">
+          {jokes.map((joke) => (
+            <div key={joke.id} className="joke-card">
+              <p>{joke.value}</p>
+              <button className="button button-ghost" onClick={() => guardarFavorito(joke)}>
+                Guardar en favoritos
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
